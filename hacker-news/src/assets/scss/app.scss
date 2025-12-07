@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+@use 'colors';
+@use 'units';
+
+.hacker-news {
+  margin: 0;
+  padding: units.px-to-rem(20);
+  font-family: arial, sans-serif;
+  font-size: units.px-to-rem(16);
+  background-color: colors.$navy-800;
+
+  &__section {
+    background-color: colors.$navy-50;
+    border-radius: units.px-to-rem(10);
+    padding: units.px-to-rem(20);
+  }
+
+  & header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: units.px-to-rem(20);
+    color: colors.$navy-1100;
+
+    h1 {
+      font-weight: 700;
+      font-size: units.px-to-rem(24);
+      margin: 0;
+    }
+  }
+
+  &__search {
+    margin-bottom: units.px-to-rem(20);
+  }
+
+  & nav {
+    margin-top: units.px-to-rem(20);
+    font-size: units.px-to-rem(19);
+
+    display: flex;
+    justify-content: center;
+  }
+
+  &__table {
+
+    border-collapse: collapse;
+    border-radius: units.px-to-rem(10);
+    border-style: hidden;
+    box-shadow: 0 0 0 1px colors.$navy-200;
+    overflow: hidden;
+
+    & th {
+      text-align: left;
+      padding: units.px-to-rem(10);
+      border: 1px solid colors.$navy-200;
+      border-top: none;
+    }
+
+    & tr {
+
+      color: colors.$navy-1100;
+      line-height: units.px-to-rem(20);
+
+      & a {
+        color: colors.$teal-1100;
+
+        &:hover {
+          color: colors.$navy-1100;
+        }
+      }
+
+      & td {
+        border: 1px solid colors.$navy-200;
+        padding: units.px-to-rem(10);
+        vertical-align: top;
+
+        &:first-child {
+          white-space: nowrap;
+
+        }
+      }
+    }
+  }
+
+  &__pages {
+    margin-top: units.px-to-rem(20);
+    text-align: center;
+  }
+
+  &__search {
+    display: flex;
+    gap: units.px-to-rem(10);
+  }
+
+  &__input {
+    width: 100%;
+    padding: units.px-to-rem(8);
+    border: 1px solid colors.$navy-1100;
+    border-radius: units.px-to-rem(4);
+    font-size: units.px-to-rem(16);
+
+    &:focus-visible {
+      outline: 2px solid colors.$teal-1100;
+      outline-offset: 2px;
+    }
+
+    &--error {
+      &:focus-visible {
+        outline-color: red;
+      }
+    }
+  }
+
+  &__button {
+    padding: units.px-to-rem(8) units.px-to-rem(12);
+    border: none;
+    border-radius: units.px-to-rem(4);
+    background-color: colors.$teal-1100;
+    color: colors.$navy-50;
+    font-size: units.px-to-rem(16);
+    cursor: pointer;
+
+    &:hover {
+      background-color: colors.$navy-1100;
+    }
+  }
+
+  &__errormessage {
+    display: none;
+    color: red;
+    margin-bottom: units.px-to-rem(10);
+
+    &--visible {
+      display: block;
+    }
+  }
+
+  &__visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  &__pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    & li {
+      margin: 0 1px;
+
+    & a {
+      display: block;
+      padding: 0.5em 1em;
+      border: 1px solid colors.$navy-800;
+      border-radius: 0.2em;
+      background-color: colors.$navy-50;
+      text-decoration: none;
+      color: colors.$navy-1100;
+    }
+
+      &[aria-current="page"] {
+        a {
+          background-color: colors.$navy-1100;
+          color: colors.$navy-50;
+        }
+      }
+    }
+
+    & a {
+      display: block;
+      padding: 0.5em 1em;
+      border: 1px solid colors.$navy-800;
+      border-radius: 0.2em;
+      background-color: colors.$navy-50;
+      text-decoration: none;
+      color: colors.$navy-1100;
+    }
+
+    & a[aria-current="page"] {
+      background-color: colors.$navy-1100;
+      color: colors.$navy-50;
+    }
+  }
+}
