@@ -34,8 +34,15 @@ const renderArticles = async (
       addOrUpdateQueryParam('page', pageValue ? pageValue.toString() : '0');
     }
 
+    let caption = 'Latest news articles';
+
+    if (queryValue) {
+      caption = `Search results for "${queryValue}"`;
+    }
+
     // Clear previous results
     articleListEl.innerHTML = `
+      <caption>${caption}</caption>
       <tr>
         <th>Date</th>
         <th>Title</th>

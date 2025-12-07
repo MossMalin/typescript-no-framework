@@ -50,6 +50,14 @@
     box-shadow: 0 0 0 1px colors.$navy-200;
     overflow: hidden;
 
+    & caption {
+      caption-side: top;
+      text-align: left;
+      font-size: units.px-to-rem(20);
+      font-weight: 600;
+      margin-bottom: units.px-to-rem(10);
+    }
+
     & th {
       text-align: left;
       padding: units.px-to-rem(10);
