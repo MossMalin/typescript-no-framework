@@ -7,8 +7,8 @@ export const setupPagination = (currentPage: number, pageCount: number) => {
     const liPrev = document.createElement('li');
 
     liPrev.innerHTML = `<a href="" data-page="prevPage">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="hacker-news__visuallyhidden">previous set of pages</span>
+            <span aria-hidden="true" data-page="prevPage">&laquo;</span>
+            <span class="hacker-news__visuallyhidden">previous page</span>
           </a>`;
     paginationEl.appendChild(liPrev);
   }
@@ -29,8 +29,8 @@ export const setupPagination = (currentPage: number, pageCount: number) => {
   if (currentPage < pageCount - 1) {
     const liNext = document.createElement('li');
     liNext.innerHTML = `<a href="" data-page="nextPage">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="hacker-news__visuallyhidden">next set of pages</span>
+            <span aria-hidden="true" data-page="nextPage">&raquo;</span>
+            <span class="hacker-news__visuallyhidden">next page</span>
           </a>`;
     paginationEl.appendChild(liNext);
   }

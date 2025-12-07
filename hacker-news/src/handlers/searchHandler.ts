@@ -32,7 +32,7 @@ export const setupSearchHandlers = () => {
   paginationEl.addEventListener('click', (event) => {
     event.preventDefault();
     const target = event.target as HTMLElement;
-    if (target.tagName !== 'A') return;
+    if (!target.dataset.page) return;
 
     const gotoPage = target.dataset.page;
     console.log(gotoPage);

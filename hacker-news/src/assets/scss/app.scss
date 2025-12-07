@@ -11,6 +11,8 @@
   background-color: colors.$navy-800;
 
   &__section {
+    max-width: units.px-to-rem(700);
+    margin: 0 auto;
     background-color: colors.$navy-50;
     border-radius: units.px-to-rem(10);
     padding: units.px-to-rem(20);
@@ -44,6 +46,7 @@
 
   &__table {
 
+    width: 100%;
     border-collapse: collapse;
     border-radius: units.px-to-rem(10);
     border-style: hidden;
