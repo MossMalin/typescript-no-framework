@@ -8,7 +8,11 @@ const pagesEl = document.querySelector<HTMLDivElement>('#pages')!;
 const errormessageEl = document.querySelector<HTMLDivElement>('#errormessage')!;
 const paginationEl = document.querySelector<HTMLUListElement>('#pagination')!;
 
-const renderArticles = async (query?: string, page?: number) => {
+const renderArticles = async (
+  query?: string,
+  page?: number,
+  popstate?: boolean
+) => {
   try {
     searchField.focus();
 
@@ -22,11 +26,13 @@ const renderArticles = async (query?: string, page?: number) => {
       pageValue ? Number(pageValue) : 0
     );
 
-    if (query || queryParam) {
-      addOrUpdateQueryParam('query', queryValue ? queryValue : '');
-    }
+    if (!popstate) {
+      if (query || queryParam) {
+        addOrUpdateQueryParam('query', queryValue ? queryValue : '');
+      }
 
-    addOrUpdateQueryParam('page', pageValue ? pageValue.toString() : '0');
+      addOrUpdateQueryParam('page', pageValue ? pageValue.toString() : '0');
+    }
 
     // Clear previous results
     articleListEl.innerHTML = `
@@ -147,6 +153,10 @@ paginationEl.addEventListener('click', (event) => {
     const pageNumber = Number(gotoPage);
     renderArticles(undefined, currentPage + pageNumber);
   }
+});
+
+window.addEventListener('popstate', function () {
+  renderArticles(undefined, undefined, true);
 });
 
 renderArticles();

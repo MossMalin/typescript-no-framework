@@ -15,5 +15,4 @@ export const getArticles = async (
   );
   articleList = response.data;
   return articleList;
-  //query=tesla&tags=story
 };
