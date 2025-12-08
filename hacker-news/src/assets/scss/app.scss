@@ -44,6 +44,16 @@
     justify-content: center;
   }
 
+  &__toggle {
+    margin-top: units.px-to-rem(10);
+    display: none;
+
+    &--visible {
+      display: block;
+    }
+  }
+
+
   &__table {
 
     width: 100%;

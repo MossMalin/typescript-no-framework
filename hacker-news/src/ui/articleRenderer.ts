@@ -1,4 +1,6 @@
 import { getArticles } from '../../services/hackerAPI';
+import type { ArticleHit } from '../../services/hackerApi.types';
+import { setupToggleHandlers } from '../handlers/eventHandler';
 import { setupPagination } from '../handlers/paginationHandler';
 import { searchField, articleListEl, pagesEl } from '../utils/dom';
 import { getQueryParam, addOrUpdateQueryParam } from '../utils/url';
@@ -15,6 +17,8 @@ export const renderArticles = async (
     const pageParam = getQueryParam('page');
     const queryValue = query || queryParam;
     const pageValue = page || pageParam;
+    let caption = 'Latest news articles';
+    let toggleArray: ArticleHit[] = [];
 
     const listOfArticles = await getArticles(
       queryValue ? queryValue : '',
@@ -28,8 +32,6 @@ export const renderArticles = async (
 
       addOrUpdateQueryParam('page', pageValue ? pageValue.toString() : '0');
     }
-
-    let caption = 'Latest news articles';
 
     if (queryValue) {
       caption = `Search results for "${queryValue}"`;
@@ -45,13 +47,20 @@ export const renderArticles = async (
     `;
 
     listOfArticles.hits.map((article) => {
+      if (!article.title || !article.url) console.log(article);
       const tr = document.createElement('tr');
       const tdDate = document.createElement('td');
       const tdArticle = document.createElement('td');
       tdDate.innerHTML = new Date(
         article.created_at_i * 1000
       ).toLocaleDateString();
-      tdArticle.innerHTML = `<a href="${article.url}">${article.title}</a>`;
+      if (!article.url && article.story_text) {
+        toggleArray.push(article);
+        tdArticle.innerHTML = `<a href="#" data-toggle="toggle" aria-expanded="false" id="toggle-${article.objectID}">${article.title}</a>
+                                <div id="panel-${article.objectID}" class="hacker-news__toggle" aria-labelledby="toggle-${article.objectID}">${article.story_text}</div>`;
+      } else {
+        tdArticle.innerHTML = `<a href="${article.url}">${article.title}</a>`;
+      }
       tr.appendChild(tdDate);
       tr.appendChild(tdArticle);
       articleListEl.appendChild(tr);
@@ -62,6 +71,7 @@ export const renderArticles = async (
     }`;
 
     setupPagination(listOfArticles.page, listOfArticles.nbPages);
+    setupToggleHandlers(toggleArray);
   } catch (error) {
     console.log('An error occurred' + error);
   }

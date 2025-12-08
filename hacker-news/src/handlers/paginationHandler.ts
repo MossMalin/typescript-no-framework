@@ -1,4 +1,5 @@
 import { paginationEl } from '../utils/dom';
+import { setupToggleHandlers } from './eventHandler';
 
 export const setupPagination = (currentPage: number, pageCount: number) => {
   paginationEl.innerHTML = '';

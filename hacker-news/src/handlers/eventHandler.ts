@@ -1,3 +1,4 @@
+import type { ArticleHit } from '../../services/hackerApi.types';
 import { renderArticles } from '../ui/articleRenderer';
 import {
   errormessageEl,
@@ -7,7 +8,7 @@ import {
 } from '../utils/dom';
 import { addOrUpdateQueryParam, getQueryParam } from '../utils/url';
 
-export const setupSearchHandlers = () => {
+export const setupEventHandlers = () => {
   searchField.addEventListener('input', () => {
     if (searchField.classList.contains('hacker-news__input--error')) {
       searchField.classList.remove('hacker-news__input--error');
@@ -52,5 +53,23 @@ export const setupSearchHandlers = () => {
 
   window.addEventListener('popstate', function () {
     renderArticles(undefined, undefined, true);
+  });
+};
+
+export const setupToggleHandlers = (toggleArray: ArticleHit[]) => {
+  toggleArray.forEach((element) => {
+    const elementEl = document.getElementById(`toggle-${element.objectID}`);
+    const panelEl = document.getElementById(`panel-${element.objectID}`);
+    if (!elementEl) return;
+    elementEl.addEventListener('click', (event) => {
+      event.preventDefault();
+      const target = event.target as HTMLElement;
+      const expanded =
+        target.getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
+      target.setAttribute('aria-expanded', expanded);
+      if (panelEl) {
+        panelEl.classList.toggle('hacker-news__toggle--visible');
+      }
+    });
   });
 };

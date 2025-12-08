@@ -1,8 +1,7 @@
 import './assets/scss/app.scss';
 import { renderArticles } from './ui/articleRenderer';
-import { setupSearchHandlers } from './handlers/searchHandler';
+import { setupEventHandlers } from './handlers/eventHandler';
 
-setupSearchHandlers();
 window.addEventListener('popstate', () =>
   renderArticles(undefined, undefined, true)
 );
