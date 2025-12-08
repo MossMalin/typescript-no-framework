@@ -4,6 +4,7 @@ export interface ArticleHit {
   url: string;
   story_text: string | null;
   objectID: string;
+  points: number;
 }
 
 export interface ArticleList {

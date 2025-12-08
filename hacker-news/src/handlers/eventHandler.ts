@@ -5,6 +5,7 @@ import {
   paginationEl,
   searchField,
   searchForm,
+  sortByPointsEl,
 } from '../utils/dom';
 import { addOrUpdateQueryParam, getQueryParam } from '../utils/url';
 
@@ -53,6 +54,12 @@ export const setupEventHandlers = () => {
 
   window.addEventListener('popstate', function () {
     renderArticles(undefined, undefined, true);
+  });
+
+  sortByPointsEl.addEventListener('change', () => {
+    const sortByPoints = sortByPointsEl.checked;
+    addOrUpdateQueryParam('sort-by', sortByPoints ? 'points' : 'date');
+    renderArticles();
   });
 };
 

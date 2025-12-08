@@ -33,7 +33,15 @@
   }
 
   &__search {
+    margin-bottom: units.px-to-rem(10);
+  }
+
+  &__sortby {
     margin-bottom: units.px-to-rem(20);
+
+    .hacker-news__checkbox {
+      margin-right: units.px-to-rem(8);
+    }
   }
 
   & nav {
@@ -97,8 +105,7 @@
         vertical-align: top;
 
         &:first-child {
-          white-space: nowrap;
-
+          width: units.px-to-rem(120);
         }
       }
     }

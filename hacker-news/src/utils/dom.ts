@@ -9,3 +9,5 @@ export const errormessageEl =
   document.querySelector<HTMLDivElement>('#errormessage')!;
 export const paginationEl =
   document.querySelector<HTMLUListElement>('#pagination')!;
+export const sortByPointsEl =
+  document.querySelector<HTMLInputElement>('#sortByPoints')!;

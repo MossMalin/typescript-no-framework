@@ -15,21 +15,22 @@ export const renderArticles = async (
 
     const queryParam = getQueryParam('query');
     const pageParam = getQueryParam('page');
+    const sortBy = getQueryParam('sort-by');
     const queryValue = query || queryParam;
-    const pageValue = page || pageParam;
+    const pageValue = page === 0 ? 0 : page || pageParam;
     let caption = 'Latest news articles';
     let toggleArray: ArticleHit[] = [];
 
     const listOfArticles = await getArticles(
       queryValue ? queryValue : '',
-      pageValue ? Number(pageValue) : 0
+      pageValue ? Number(pageValue) : 0,
+      sortBy === 'points' ? 'points' : 'date'
     );
 
     if (!popstate) {
       if (query || queryParam) {
         addOrUpdateQueryParam('query', queryValue ? queryValue : '');
       }
-
       addOrUpdateQueryParam('page', pageValue ? pageValue.toString() : '0');
     }
 
@@ -42,18 +43,18 @@ export const renderArticles = async (
       <caption>${caption}</caption>
       <tr>
         <th>Date</th>
+        <th>Points</th>
         <th>Title</th>
       </tr>
     `;
 
     listOfArticles.hits.map((article) => {
-      if (!article.title || !article.url) console.log(article);
       const tr = document.createElement('tr');
       const tdDate = document.createElement('td');
+      const tdPoints = document.createElement('td');
       const tdArticle = document.createElement('td');
-      tdDate.innerHTML = new Date(
-        article.created_at_i * 1000
-      ).toLocaleDateString();
+      tdDate.innerHTML = new Date(article.created_at_i * 1000).toLocaleString();
+      tdPoints.innerHTML = article.points.toString();
       if (!article.url && article.story_text) {
         toggleArray.push(article);
         tdArticle.innerHTML = `<a href="#" data-toggle="toggle" aria-expanded="false" id="toggle-${article.objectID}">${article.title}</a>
@@ -62,6 +63,7 @@ export const renderArticles = async (
         tdArticle.innerHTML = `<a href="${article.url}">${article.title}</a>`;
       }
       tr.appendChild(tdDate);
+      tr.appendChild(tdPoints);
       tr.appendChild(tdArticle);
       articleListEl.appendChild(tr);
     });
