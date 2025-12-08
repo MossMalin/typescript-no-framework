@@ -7,3 +7,5 @@ window.addEventListener('popstate', () =>
 );
 
 renderArticles();
+
+setupEventHandlers();

@@ -3,7 +3,6 @@ import { setupToggleHandlers } from './eventHandler';
 
 export const setupPagination = (currentPage: number, pageCount: number) => {
   paginationEl.innerHTML = '';
-
   if (currentPage > 0) {
     const liPrev = document.createElement('li');
 
