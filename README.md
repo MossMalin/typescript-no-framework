@@ -4,8 +4,10 @@
 
 ## import.meta
 
-Some problems with the .env file but I solved it.
+I had some issues with the .env file, but they’re resolved now.
 
-## New without url:s
+## News items without URLs
 
-There are some articles that does not have any url, they instead had an story_text. I decided to do accordion of these instead and had to be creative to be able to add EventListener this kind of stories. Search for houses look for the "Show HN: A Vaadin 24, Spring algebra calculator with dynamic variable buttons".
+Some articles don’t include a URL; instead, they provide only a story_text. For these, I decided to display the content in an accordion component. I also had to get a bit creative when adding EventListener support for this type of story.
+
+To see an example, search for "houses" and find the story titled “Show HN: A Vaadin 24, Spring algebra calculator with dynamic variable buttons.”
