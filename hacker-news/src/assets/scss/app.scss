@@ -135,7 +135,7 @@
 
     &--error {
       &:focus-visible {
-        outline-color: red;
+        outline-color: colors.$burgundy-1100;
       }
     }
   }
@@ -156,7 +156,7 @@
 
   &__errormessage {
     display: none;
-    color: red;
+    color: colors.$burgundy-1100;
     margin-bottom: units.px-to-rem(10);
 
     &--visible {
