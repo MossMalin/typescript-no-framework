@@ -1,7 +1,9 @@
 import axios from 'axios';
 import type { ArticleList } from './hackerApi.types.ts';
 
-const hackerApiUrl = 'https://hn.algolia.com/api/v1/';
+const BASE_URL = import.meta.env.VITE_API_BASEURL;
+
+//const hackerApiUrl = 'https://hn.algolia.com/api/v1/';
 
 let articleList: ArticleList;
 
@@ -13,7 +15,7 @@ export const getArticles = async (
   const search = sortBy === 'points' ? 'search' : 'search_by_date';
   const pageQuery = page ? `&page=${page}` : '';
   const response = await axios.get<ArticleList>(
-    `${hackerApiUrl}${search}?tags=story&query=${query}${pageQuery}`
+    `${BASE_URL}${search}?tags=story&query=${query}${pageQuery}`
   );
   articleList = response.data;
   return articleList;

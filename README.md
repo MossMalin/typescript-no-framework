@@ -4,6 +4,8 @@
 
 ## import.meta
 
-Added .env file and vite-env.d.ts file but still I got the error:
-Property 'env' does not exist on type 'ImportMeta'.
-Was not able to solve the env file problem.
+Some problems with the .env file but I solved it.
+
+## New without url:s
+
+There are some articles that does not have any url, they instead had an story_text. I decided to do accordion of these instead and had to be creative to be able to add EventListener this kind of stories. Search for houses look for the "Show HN: A Vaadin 24, Spring algebra calculator with dynamic variable buttons".

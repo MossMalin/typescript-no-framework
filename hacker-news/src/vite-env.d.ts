@@ -5,7 +5,7 @@ interface ViteTypeOptions {
 }
 
 interface ImportMetaEnv {
-  readonly HACKER_API_BASEURL: string;
+  readonly VITE_API_BASEURL: string;
   // more env variables...
 }
 
