@@ -1,4 +1,4 @@
-import type { ArticleHit } from '../../services/hackerApi.types';
+import type { ArticleHit } from '../../services/hackersApi.types';
 import { renderArticles } from '../ui/articleRenderer';
 import {
   errormessageEl,

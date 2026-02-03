@@ -1,9 +1,7 @@
 import axios from 'axios';
-import type { ArticleList } from './hackerApi.types.ts';
+import type { ArticleList } from './hackersApi.types.ts';
 
 const BASE_URL = import.meta.env.VITE_API_BASEURL;
-
-//const hackerApiUrl = 'https://hn.algolia.com/api/v1/';
 
 let articleList: ArticleList;
 

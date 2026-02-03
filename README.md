@@ -1,10 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/0ERRLu6p)
-
-# Problems
-
-## import.meta
-
-I had some issues with the .env file, but they’re resolved now.
+[Deployed app](https://moss-news.netlify.app)
 
 ## News items without URLs
 

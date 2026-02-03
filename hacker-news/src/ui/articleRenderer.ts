@@ -1,5 +1,5 @@
-import { getArticles } from '../../services/hackerAPI';
-import type { ArticleHit } from '../../services/hackerApi.types';
+import { getArticles } from '../../services/hackersApi';
+import type { ArticleHit } from '../../services/hackersApi.types';
 import { setupToggleHandlers } from '../handlers/eventHandler';
 import { setupPagination } from '../handlers/paginationHandler';
 import { searchField, articleListEl, pagesEl } from '../utils/dom';
